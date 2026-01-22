@@ -1,0 +1,2 @@
+# 301 redirect www to apex domain
+https://www.mariagolia.com/* https://mariagolia.com/:splat 301
