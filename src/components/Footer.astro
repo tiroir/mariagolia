@@ -7,17 +7,18 @@ interface Props {
 
 const { locale } = Astro.props;
 const t = getTranslations(locale);
+const year = new Date().getFullYear();
 ---
 
 <footer class="footer">
   <div class="container footer-inner">
-    <div class="footer-logo">
-      <img src="/images/logo-piano-only.png" alt="Maria Golia" width="30" height="40" />
-      <span>Maria Golia</span>
+    <div class="footer-main">
+      <p class="footer-title">Maria Golia International Piano Competition</p>
+      <p class="footer-venue">Castello Ducale di Agliè · Piedmont, Italy</p>
     </div>
-    <div class="footer-info">
+    <div class="footer-meta">
       <p>{t.footer.director}</p>
-      <p>{t.footer.copyright}</p>
+      <p>© {year} Maria Golia Competition</p>
     </div>
   </div>
 </footer>
@@ -25,8 +26,8 @@ const t = getTranslations(locale);
 <style>
   .footer {
     background: var(--color-dark);
-    color: var(--color-light);
-    padding: 2rem 0;
+    color: rgba(255, 255, 255, 0.9);
+    padding: 2.5rem 0;
     margin-top: auto;
   }
 
@@ -37,26 +38,28 @@ const t = getTranslations(locale);
     gap: 2rem;
   }
 
-  .footer-logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+  .footer-main {
+  }
+
+  .footer-title {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
     font-weight: 500;
+    margin-bottom: 0.25rem;
   }
 
-  .footer-logo img {
-    height: 30px;
-    width: auto;
-    filter: brightness(0) invert(1);
+  .footer-venue {
+    font-size: 0.875rem;
+    opacity: 0.7;
   }
 
-  .footer-info {
+  .footer-meta {
     text-align: right;
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 0.875rem;
+    opacity: 0.7;
   }
 
-  .footer-info p {
+  .footer-meta p {
     margin: 0.25rem 0;
   }
 
@@ -64,9 +67,10 @@ const t = getTranslations(locale);
     .footer-inner {
       flex-direction: column;
       text-align: center;
+      gap: 1.5rem;
     }
 
-    .footer-info {
+    .footer-meta {
       text-align: center;
     }
   }

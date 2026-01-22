@@ -32,12 +32,19 @@ const { title = t.site.title, description = t.site.description } = Astro.props;
 </html>
 
 <style is:global>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
+
   :root {
-    --color-primary: #0099cc;
-    --color-dark: #1a1a1a;
-    --color-light: #f5f5f5;
+    --color-primary: #5a8a9a;
+    --color-primary-dark: #4a7585;
+    --color-dark: #2c3e50;
+    --color-text: #4a5568;
+    --color-light: #f8f6f3;
+    --color-cream: #faf9f7;
     --color-white: #ffffff;
-    --font-main: 'Segoe UI', system-ui, sans-serif;
+    --color-border: #e8e6e3;
+    --font-serif: 'Cormorant Garamond', Georgia, serif;
+    --font-sans: 'Inter', system-ui, sans-serif;
   }
 
   * {
@@ -47,7 +54,7 @@ const { title = t.site.title, description = t.site.description } = Astro.props;
   }
 
   html {
-    font-family: var(--font-main);
+    font-family: var(--font-sans);
     scroll-behavior: smooth;
   }
 
@@ -55,12 +62,19 @@ const { title = t.site.title, description = t.site.description } = Astro.props;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    background: var(--color-white);
+    background: var(--color-cream);
     color: var(--color-dark);
+    font-size: 16px;
+    line-height: 1.6;
   }
 
   main {
     flex: 1;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
   }
 
   a {
@@ -73,7 +87,7 @@ const { title = t.site.title, description = t.site.description } = Astro.props;
   }
 
   .container {
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
     padding: 0 1.5rem;
   }
@@ -83,25 +97,27 @@ const { title = t.site.title, description = t.site.description } = Astro.props;
   }
 
   .section-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
     margin-bottom: 2rem;
-    color: var(--color-dark);
+    color: var(--color-primary);
+    font-family: var(--font-serif);
   }
 
   .btn {
     display: inline-block;
-    padding: 0.75rem 1.5rem;
+    padding: 0.875rem 2rem;
     background: var(--color-primary);
     color: var(--color-white);
     border: none;
     border-radius: 4px;
     font-size: 1rem;
+    font-weight: 500;
     cursor: pointer;
-    transition: opacity 0.2s;
+    transition: background 0.2s;
   }
 
   .btn:hover {
-    opacity: 0.9;
+    background: var(--color-primary-dark);
     text-decoration: none;
   }
 </style>

@@ -1,5 +1,5 @@
 ---
-import { getTranslations, getLocalizedPath, type Locale, locales } from '../i18n/utils';
+import { getTranslations, type Locale } from '../i18n/utils';
 
 interface Props {
   locale: Locale;
@@ -9,126 +9,140 @@ const { locale } = Astro.props;
 const t = getTranslations(locale);
 const currentPath = Astro.url.pathname;
 
+// Navigation items (without Home, Apply is special)
 const navItems = [
-  { href: `/${locale}`, label: t.nav.home },
-  { href: `/${locale}/competition`, label: t.nav.competition },
-  { href: `/${locale}/jury`, label: t.nav.jury },
-  { href: `/${locale}/apply`, label: t.nav.apply },
-  { href: `/${locale}/contact`, label: t.nav.contact },
+  { href: `/${locale}/about`, label: locale === 'en' ? 'About' : 'Chi siamo' },
+  { href: `/${locale}/competition`, label: locale === 'en' ? 'Rules' : 'Regolamento' },
+  { href: `/${locale}/jury`, label: locale === 'en' ? 'Jury' : 'Giuria' },
+  { href: `/${locale}/contact`, label: locale === 'en' ? 'Venue' : 'Location' },
 ];
 
-// Get alternate locale for language switcher
+// Get alternate locale path
 const altLocale = locale === 'en' ? 'it' : 'en';
 const altPath = currentPath.replace(`/${locale}`, `/${altLocale}`);
 ---
 
 <header class="header">
   <div class="container header-inner">
-    <a href={`/${locale}`} class="logo">
-      <img src="/images/logo-piano-only.png" alt="Maria Golia" width="40" height="55" />
-      <span>Maria Golia</span>
-    </a>
+    <div class="lang-switch">
+      <a href={altPath.replace(`/${altLocale}`, '/it')} class:list={['lang-link', { active: locale === 'it' }]}>IT</a>
+      <span class="lang-sep">/</span>
+      <a href={altPath.replace(`/${altLocale}`, '/en')} class:list={['lang-link', { active: locale === 'en' }]}>EN</a>
+    </div>
 
     <nav class="nav">
       {navItems.map(item => (
-        <a href={item.href} class:list={['nav-link', { active: currentPath === item.href || (item.href !== `/${locale}` && currentPath.startsWith(item.href)) }]}>
+        <a href={item.href} class:list={['nav-link', { active: currentPath.startsWith(item.href) }]}>
           {item.label}
         </a>
       ))}
-    </nav>
-
-    <div class="lang-switch">
-      <a href={altPath} class="lang-btn" title={altLocale === 'it' ? 'Italiano' : 'English'}>
-        {altLocale.toUpperCase()}
+      <a href={`/${locale}/apply`} class="nav-btn">
+        {locale === 'en' ? 'Apply' : 'Iscrizione'}
       </a>
-    </div>
+    </nav>
   </div>
 </header>
 
 <style>
   .header {
-    background: var(--color-white);
-    border-bottom: 1px solid #eee;
-    position: sticky;
+    position: absolute;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 100;
+    padding: 1.25rem 0;
   }
 
   .header-inner {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 1.5rem;
-    gap: 2rem;
-  }
-
-  .logo {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 600;
-    font-size: 1.1rem;
-    color: var(--color-dark);
-  }
-
-  .logo:hover {
-    text-decoration: none;
-  }
-
-  .logo img {
-    height: 40px;
-    width: auto;
-  }
-
-  .nav {
-    display: flex;
-    gap: 1.5rem;
-  }
-
-  .nav-link {
-    color: var(--color-dark);
-    font-size: 0.95rem;
-    padding: 0.5rem 0;
-    border-bottom: 2px solid transparent;
-    transition: border-color 0.2s;
-  }
-
-  .nav-link:hover,
-  .nav-link.active {
-    text-decoration: none;
-    border-bottom-color: var(--color-primary);
   }
 
   .lang-switch {
     display: flex;
+    align-items: center;
+    gap: 0.25rem;
   }
 
-  .lang-btn {
-    padding: 0.4rem 0.8rem;
-    border: 1px solid var(--color-dark);
-    border-radius: 4px;
-    font-size: 0.85rem;
+  .lang-link {
+    font-size: 0.875rem;
+    color: var(--color-text);
+    padding: 0.25rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+
+  .lang-link:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+
+  .lang-link.active {
+    opacity: 1;
     font-weight: 500;
-    color: var(--color-dark);
   }
 
-  .lang-btn:hover {
-    background: var(--color-dark);
-    color: var(--color-white);
+  .lang-sep {
+    color: var(--color-text);
+    opacity: 0.4;
+    font-size: 0.875rem;
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-link {
+    color: var(--color-dark);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    text-decoration: none;
+    color: var(--color-primary);
+  }
+
+  .nav-link.active {
+    color: var(--color-primary);
+  }
+
+  .nav-btn {
+    background: var(--color-primary);
+    color: white;
+    padding: 0.5rem 1.25rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: background 0.2s;
+  }
+
+  .nav-btn:hover {
+    background: var(--color-primary-dark);
     text-decoration: none;
   }
 
   @media (max-width: 768px) {
+    .header {
+      position: relative;
+      background: var(--color-cream);
+      border-bottom: 1px solid var(--color-border);
+    }
+
     .header-inner {
       flex-wrap: wrap;
+      gap: 1rem;
     }
 
     .nav {
-      order: 3;
       width: 100%;
       justify-content: center;
+      flex-wrap: wrap;
       gap: 1rem;
-      padding-top: 1rem;
     }
   }
 </style>

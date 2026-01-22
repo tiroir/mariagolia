@@ -7,29 +7,40 @@ const t = getTranslations('en');
 
 <Layout>
   <section class="hero">
+    <div class="hero-bg"></div>
     <div class="container hero-content">
       <img src="/images/logo.png" alt="Maria Golia International Piano Competition" class="hero-logo" />
-      <h1>{t.home.hero.title}</h1>
-      <p class="subtitle">{t.home.hero.subtitle}</p>
-      <div class="hero-details">
-        <p class="dates">{t.home.hero.dates}</p>
-        <p class="location">{t.home.hero.location}</p>
-      </div>
-      <a href="/en/apply" class="btn">{t.home.hero.cta}</a>
+
+      <p class="hero-subtitle">INTERNATIONAL PIANO COMPETITION</p>
+
+      <h1 class="hero-date">May 1-3, 2026</h1>
+      <p class="hero-location">Castello Ducale di Agliè, Italy</p>
+
+      <a href="/en/apply" class="btn">Apply Now</a>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section welcome">
+    <div class="container">
+      <h2 class="welcome-title">Welcome to the <em>Maria Golia</em> International Piano Competition</h2>
+      <p class="welcome-text">
+        A prestigious piano competition set in the magnificent Baroque halls of the Castello Ducale di Agliè in Piedmont, Italy.
+        Young pianists from around the world compete for prizes and the opportunity to perform in renowned concert halls.
+      </p>
+    </div>
+  </section>
+
+  <section class="section categories">
     <div class="container">
       <div class="cards">
         <div class="card">
-          <h2>{t.home.sections.youth.title}</h2>
-          <p>{t.home.sections.youth.description}</p>
+          <h3>Section I: Youth Categories</h3>
+          <p>Four age categories for young pianists up to 18 years old. A nurturing environment to showcase emerging talent.</p>
           <a href="/en/competition#youth">Learn more →</a>
         </div>
         <div class="card">
-          <h2>{t.home.sections.international.title}</h2>
-          <p>{t.home.sections.international.description}</p>
+          <h3>Section II: International</h3>
+          <p>Open to pianists aged 18-32. Pre-selection round followed by finals with cash prizes and concert opportunities.</p>
           <a href="/en/competition#international">Learn more →</a>
         </div>
       </div>
@@ -38,13 +49,14 @@ const t = getTranslations('en');
 
   <section class="section venue">
     <div class="container">
-      <h2 class="section-title">Venue</h2>
+      <h2 class="section-title">The Venue</h2>
       <div class="venue-content">
-        <div class="venue-text">
-          <h3>Castello Ducale di Agliè</h3>
-          <p>A magnificent Baroque residence in Piedmont, Italy. The castle's historic halls provide an exceptional setting for the competition, blending cultural heritage with musical excellence.</p>
-          <p><strong>Address:</strong> Piazza Castello 2, 10011 Agliè TO, Italy</p>
-        </div>
+        <h3>Castello Ducale di Agliè</h3>
+        <p>
+          A magnificent Baroque residence in Piedmont, Italy. The castle's historic halls provide an exceptional
+          setting for the competition, blending cultural heritage with musical excellence.
+        </p>
+        <p class="venue-address">Piazza Castello 2, 10011 Agliè (TO), Italy</p>
       </div>
     </div>
   </section>
@@ -52,96 +64,159 @@ const t = getTranslations('en');
 
 <style>
   .hero {
-    background: linear-gradient(135deg, var(--color-light) 0%, #e8f4f8 100%);
-    padding: 6rem 0;
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     text-align: center;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg,
+        rgba(248, 246, 243, 0.85) 0%,
+        rgba(248, 246, 243, 0.9) 50%,
+        rgba(248, 246, 243, 0.95) 100%
+      ),
+      radial-gradient(ellipse at 30% 20%, rgba(180, 160, 140, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 30%, rgba(200, 180, 160, 0.1) 0%, transparent 40%),
+      radial-gradient(ellipse at 50% 80%, rgba(90, 138, 154, 0.08) 0%, transparent 50%);
+    background-color: #f5f2ef;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    padding: 6rem 1.5rem 4rem;
   }
 
   .hero-logo {
-    max-width: 450px;
+    max-width: 400px;
+    width: 100%;
     height: auto;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero h1 {
-    font-size: 3rem;
     margin-bottom: 0.5rem;
-    color: var(--color-dark);
   }
 
-  .subtitle {
-    font-size: 1.5rem;
+  .hero-subtitle {
+    font-size: 0.875rem;
+    letter-spacing: 3px;
     color: var(--color-primary);
+    margin-bottom: 2.5rem;
+    font-weight: 500;
+  }
+
+  .hero-date {
+    font-family: var(--font-serif);
+    font-size: 2.75rem;
+    font-weight: 400;
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-location {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+    margin-bottom: 2.5rem;
+  }
+
+  /* Welcome section */
+  .welcome {
+    background: var(--color-light);
+    border-top: 1px solid var(--color-border);
+  }
+
+  .welcome-title {
+    font-size: 1.75rem;
+    font-weight: 500;
+    color: var(--color-dark);
     margin-bottom: 1.5rem;
+    text-align: center;
   }
 
-  .hero-details {
-    margin-bottom: 2rem;
+  .welcome-title em {
+    font-style: italic;
   }
 
-  .dates {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.25rem;
+  .welcome-text {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    color: var(--color-text);
+    line-height: 1.8;
   }
 
-  .location {
-    color: #666;
-  }
-
+  /* Categories cards */
   .cards {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
   }
 
   .card {
-    background: var(--color-light);
+    background: var(--color-white);
     padding: 2rem;
     border-radius: 8px;
-    border-left: 4px solid var(--color-primary);
+    border: 1px solid var(--color-border);
   }
 
-  .card h2 {
+  .card h3 {
     font-size: 1.25rem;
     margin-bottom: 1rem;
+    color: var(--color-dark);
   }
 
   .card p {
-    color: #666;
-    margin-bottom: 1rem;
+    color: var(--color-text);
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
   }
 
+  .card a {
+    font-weight: 500;
+  }
+
+  /* Venue section */
   .venue {
-    background: var(--color-light);
+    background: var(--color-white);
   }
 
   .venue-content {
     max-width: 700px;
   }
 
-  .venue-text h3 {
+  .venue-content h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
     color: var(--color-primary);
   }
 
-  .venue-text p {
+  .venue-content p {
     margin-bottom: 1rem;
-    line-height: 1.6;
+    line-height: 1.7;
+    color: var(--color-text);
+  }
+
+  .venue-address {
+    font-weight: 500;
+    color: var(--color-dark) !important;
   }
 
   @media (max-width: 600px) {
-    .hero h1 {
+    .hero-logo {
+      max-width: 280px;
+    }
+
+    .hero-date {
       font-size: 2rem;
     }
 
-    .subtitle {
-      font-size: 1.1rem;
-    }
-
-    .hero-logo {
-      max-width: 200px;
+    .hero-subtitle {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
     }
   }
 </style>
