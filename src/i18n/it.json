@@ -1,0 +1,95 @@
+{
+  "site": {
+    "title": "Maria Golia Concorso Pianistico Internazionale",
+    "description": "Concorso pianistico internazionale al Castello Ducale di Agliè, Italia"
+  },
+  "nav": {
+    "home": "Home",
+    "competition": "Concorso",
+    "jury": "Giuria",
+    "apply": "Iscrizione",
+    "contact": "Contatti"
+  },
+  "home": {
+    "hero": {
+      "title": "Maria Golia",
+      "subtitle": "Concorso Pianistico Internazionale",
+      "dates": "1-3 Maggio 2026",
+      "location": "Castello Ducale di Agliè, Italia",
+      "cta": "Iscriviti Ora"
+    },
+    "sections": {
+      "youth": {
+        "title": "Categorie Giovani",
+        "description": "Categorie A-D per giovani pianisti fino a 15 anni"
+      },
+      "international": {
+        "title": "Concorso Internazionale",
+        "description": "Aperto a pianisti di tutte le età e nazionalità"
+      }
+    }
+  },
+  "competition": {
+    "title": "Struttura del Concorso",
+    "section1": {
+      "title": "Sezione I: Categorie Giovani",
+      "intro": "Ogni candidato esegue un unico brano, rappresentativo del proprio livello.",
+      "categories": {
+        "a": { "name": "Categoria A", "age": "fino a 7 anni", "duration": "5 minuti max" },
+        "b": { "name": "Categoria B", "age": "7-10 anni", "duration": "8 minuti max" },
+        "c": { "name": "Categoria C", "age": "10-12 anni", "duration": "12 minuti max" },
+        "d": { "name": "Categoria D", "age": "12-15 anni", "duration": "18 minuti max" }
+      },
+      "prizes": "Buoni libro (€50) e diplomi di partecipazione"
+    },
+    "section2": {
+      "title": "Sezione II: Maria Golia International",
+      "intro": "Aperto a pianisti di tutte le nazionalità, senza limiti di età.",
+      "preselection": {
+        "title": "Preselezione Online",
+        "duration": "18 minuti max",
+        "requirements": [
+          "J.S. Bach: Preludio e Fuga",
+          "Studio virtuosistico di F. Chopin o F. Liszt",
+          "Brano a scelta libera"
+        ]
+      },
+      "final": {
+        "title": "Prova Finale",
+        "duration": "35 minuti max",
+        "description": "Programma libero (senza ripetizioni del repertorio di preselezione)"
+      },
+      "prizes": {
+        "first": { "prize": "€1.000", "concerts": "4 concerti" },
+        "second": { "prize": "€500", "concerts": "2 concerti" },
+        "third": { "prize": "€300", "concerts": "1 concerto" }
+      }
+    }
+  },
+  "jury": {
+    "title": "Giuria",
+    "president": "Presidente",
+    "members": "Membri",
+    "tba": "Da annunciare"
+  },
+  "apply": {
+    "title": "Iscrizione",
+    "deadline": "Scadenza iscrizioni: Fine Febbraio 2026",
+    "fees": {
+      "title": "Quote di Iscrizione",
+      "youth": "Categorie Giovani: €30-45",
+      "international": "Maria Golia International: €70"
+    },
+    "contact": "Per iscrizioni e informazioni, contattateci."
+  },
+  "contact": {
+    "title": "Contatti",
+    "director": "Direttore Artistico",
+    "email": "Email",
+    "location": "Sede"
+  },
+  "footer": {
+    "copyright": "© 2026 Maria Golia Concorso Pianistico Internazionale",
+    "director": "Direzione Artistica: Marina Scalafiotti"
+  }
+}

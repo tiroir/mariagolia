@@ -1,0 +1,134 @@
+---
+import { getTranslations, getLocalizedPath, type Locale, locales } from '../i18n/utils';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = getTranslations(locale);
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: `/${locale}`, label: t.nav.home },
+  { href: `/${locale}/competition`, label: t.nav.competition },
+  { href: `/${locale}/jury`, label: t.nav.jury },
+  { href: `/${locale}/apply`, label: t.nav.apply },
+  { href: `/${locale}/contact`, label: t.nav.contact },
+];
+
+// Get alternate locale for language switcher
+const altLocale = locale === 'en' ? 'it' : 'en';
+const altPath = currentPath.replace(`/${locale}`, `/${altLocale}`);
+---
+
+<header class="header">
+  <div class="container header-inner">
+    <a href={`/${locale}`} class="logo">
+      <img src="/images/logo-piano-only.png" alt="Maria Golia" width="40" height="55" />
+      <span>Maria Golia</span>
+    </a>
+
+    <nav class="nav">
+      {navItems.map(item => (
+        <a href={item.href} class:list={['nav-link', { active: currentPath === item.href || (item.href !== `/${locale}` && currentPath.startsWith(item.href)) }]}>
+          {item.label}
+        </a>
+      ))}
+    </nav>
+
+    <div class="lang-switch">
+      <a href={altPath} class="lang-btn" title={altLocale === 'it' ? 'Italiano' : 'English'}>
+        {altLocale.toUpperCase()}
+      </a>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    background: var(--color-white);
+    border-bottom: 1px solid #eee;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    gap: 2rem;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--color-dark);
+  }
+
+  .logo:hover {
+    text-decoration: none;
+  }
+
+  .logo img {
+    height: 40px;
+    width: auto;
+  }
+
+  .nav {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    color: var(--color-dark);
+    font-size: 0.95rem;
+    padding: 0.5rem 0;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    text-decoration: none;
+    border-bottom-color: var(--color-primary);
+  }
+
+  .lang-switch {
+    display: flex;
+  }
+
+  .lang-btn {
+    padding: 0.4rem 0.8rem;
+    border: 1px solid var(--color-dark);
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-dark);
+  }
+
+  .lang-btn:hover {
+    background: var(--color-dark);
+    color: var(--color-white);
+    text-decoration: none;
+  }
+
+  @media (max-width: 768px) {
+    .header-inner {
+      flex-wrap: wrap;
+    }
+
+    .nav {
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      gap: 1rem;
+      padding-top: 1rem;
+    }
+  }
+</style>

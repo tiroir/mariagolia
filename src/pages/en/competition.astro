@@ -1,0 +1,198 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getTranslations } from '../../i18n/utils';
+
+const t = getTranslations('en');
+---
+
+<Layout title={`${t.competition.title} | ${t.site.title}`}>
+  <section class="section">
+    <div class="container">
+      <h1 class="page-title">{t.competition.title}</h1>
+
+      <div id="youth" class="competition-section">
+        <h2>{t.competition.section1.title}</h2>
+        <p class="intro">{t.competition.section1.intro}</p>
+
+        <div class="categories">
+          <div class="category">
+            <h3>{t.competition.section1.categories.a.name}</h3>
+            <p><strong>Age:</strong> {t.competition.section1.categories.a.age}</p>
+            <p><strong>Duration:</strong> {t.competition.section1.categories.a.duration}</p>
+          </div>
+          <div class="category">
+            <h3>{t.competition.section1.categories.b.name}</h3>
+            <p><strong>Age:</strong> {t.competition.section1.categories.b.age}</p>
+            <p><strong>Duration:</strong> {t.competition.section1.categories.b.duration}</p>
+          </div>
+          <div class="category">
+            <h3>{t.competition.section1.categories.c.name}</h3>
+            <p><strong>Age:</strong> {t.competition.section1.categories.c.age}</p>
+            <p><strong>Duration:</strong> {t.competition.section1.categories.c.duration}</p>
+          </div>
+          <div class="category">
+            <h3>{t.competition.section1.categories.d.name}</h3>
+            <p><strong>Age:</strong> {t.competition.section1.categories.d.age}</p>
+            <p><strong>Duration:</strong> {t.competition.section1.categories.d.duration}</p>
+          </div>
+        </div>
+
+        <p class="prizes-note"><strong>Prizes:</strong> {t.competition.section1.prizes}</p>
+      </div>
+
+      <div id="international" class="competition-section">
+        <h2>{t.competition.section2.title}</h2>
+        <p class="intro">{t.competition.section2.intro}</p>
+
+        <div class="round">
+          <h3>{t.competition.section2.preselection.title}</h3>
+          <p><em>{t.competition.section2.preselection.duration}</em></p>
+          <p>Programme must include:</p>
+          <ul>
+            {t.competition.section2.preselection.requirements.map(req => (
+              <li>{req}</li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="round">
+          <h3>{t.competition.section2.final.title}</h3>
+          <p><em>{t.competition.section2.final.duration}</em></p>
+          <p>{t.competition.section2.final.description}</p>
+        </div>
+
+        <div class="prizes">
+          <h3>Prizes</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Place</th>
+                <th>Prize</th>
+                <th>Concerts</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1st Prize</td>
+                <td>{t.competition.section2.prizes.first.prize}</td>
+                <td>{t.competition.section2.prizes.first.concerts}</td>
+              </tr>
+              <tr>
+                <td>2nd Prize</td>
+                <td>{t.competition.section2.prizes.second.prize}</td>
+                <td>{t.competition.section2.prizes.second.concerts}</td>
+              </tr>
+              <tr>
+                <td>3rd Prize</td>
+                <td>{t.competition.section2.prizes.third.prize}</td>
+                <td>{t.competition.section2.prizes.third.concerts}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-title {
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    color: var(--color-dark);
+  }
+
+  .competition-section {
+    margin-bottom: 4rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .competition-section:last-child {
+    border-bottom: none;
+  }
+
+  .competition-section h2 {
+    font-size: 1.75rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .intro {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 2rem;
+  }
+
+  .categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .category {
+    background: var(--color-light);
+    padding: 1.5rem;
+    border-radius: 8px;
+  }
+
+  .category h3 {
+    margin-bottom: 0.75rem;
+    color: var(--color-dark);
+  }
+
+  .category p {
+    margin: 0.25rem 0;
+    font-size: 0.95rem;
+  }
+
+  .prizes-note {
+    padding: 1rem;
+    background: #e8f4f8;
+    border-radius: 4px;
+  }
+
+  .round {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: var(--color-light);
+    border-radius: 8px;
+  }
+
+  .round h3 {
+    margin-bottom: 0.5rem;
+  }
+
+  .round ul {
+    margin: 1rem 0 0 1.5rem;
+  }
+
+  .round li {
+    margin: 0.5rem 0;
+  }
+
+  .prizes table {
+    width: 100%;
+    max-width: 500px;
+    border-collapse: collapse;
+    margin-top: 1rem;
+  }
+
+  .prizes th,
+  .prizes td {
+    padding: 0.75rem;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .prizes th {
+    background: var(--color-light);
+    font-weight: 600;
+  }
+
+  .prizes tr:first-child td {
+    background: #fff8e6;
+    font-weight: 500;
+  }
+</style>

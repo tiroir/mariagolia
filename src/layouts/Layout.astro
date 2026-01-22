@@ -1,0 +1,107 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { getLocaleFromUrl, getTranslations, type Locale } from '../i18n/utils';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const locale = getLocaleFromUrl(Astro.url) as Locale;
+const t = getTranslations(locale);
+const { title = t.site.title, description = t.site.description } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang={locale}>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <link rel="icon" type="image/png" href="/images/logo-piano-only.png" />
+  <title>{title}</title>
+</head>
+<body>
+  <Header locale={locale} />
+  <main>
+    <slot />
+  </main>
+  <Footer locale={locale} />
+</body>
+</html>
+
+<style is:global>
+  :root {
+    --color-primary: #0099cc;
+    --color-dark: #1a1a1a;
+    --color-light: #f5f5f5;
+    --color-white: #ffffff;
+    --font-main: 'Segoe UI', system-ui, sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: var(--font-main);
+    scroll-behavior: smooth;
+  }
+
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    color: var(--color-dark);
+  }
+
+  main {
+    flex: 1;
+  }
+
+  a {
+    color: var(--color-primary);
+    text-decoration: none;
+  }
+
+  a:hover {
+    text-decoration: underline;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .section {
+    padding: 4rem 0;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    color: var(--color-dark);
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .btn:hover {
+    opacity: 0.9;
+    text-decoration: none;
+  }
+</style>
