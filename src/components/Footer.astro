@@ -19,6 +19,7 @@ const year = new Date().getFullYear();
     <div class="footer-meta">
       <p>{t.footer.director}</p>
       <p>© {year} Maria Golia Competition</p>
+      <p class="privacy-link"><a href={`/${locale}/privacy`}>{locale === 'en' ? 'Privacy Policy' : 'Privacy'}</a></p>
     </div>
   </div>
 </footer>
@@ -61,6 +62,21 @@ const year = new Date().getFullYear();
 
   .footer-meta p {
     margin: 0.25rem 0;
+  }
+
+  .privacy-link {
+    margin-top: 0.5rem;
+  }
+
+  .privacy-link a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.8rem;
+  }
+
+  .privacy-link a:hover {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: underline;
   }
 
   @media (max-width: 600px) {
