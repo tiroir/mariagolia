@@ -1,0 +1,19 @@
+{
+  "defaults": {
+    "glowIntensity": 0.75,
+    "glowRadius": 0.82,
+    "blurSigma": 85,
+    "quality": 90,
+    "compressionLevel": 9,
+    "format": "png"
+  },
+  "images": [
+    {
+      "name": "hero-bg",
+      "source": "source/hero-bg-original.png",
+      "output": "hero-bg.png",
+      "glowIntensity": 0.75,
+      "glowRadius": 0.85
+    }
+  ]
+}
