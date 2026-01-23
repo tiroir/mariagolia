@@ -97,16 +97,17 @@ const t = getTranslations('it');
   }
 
   .hero-logo {
-    max-width: 950px;
+    max-width: 1080px;
     width: 100%;
     height: auto;
     margin-bottom: 0.75rem;
   }
 
   .hero-subtitle {
+    font-family: var(--font-serif);
     font-size: 1.0625rem;
-    letter-spacing: 0.22rem;
-    color: var(--color-primary);
+    letter-spacing: 0.15rem;
+    color: var(--color-dark);
     margin-bottom: 3.5rem;
     font-weight: 500;
   }
@@ -129,6 +130,11 @@ const t = getTranslations('it');
     font-size: 1.125rem;
     padding: 0.95rem 2.75rem;
     min-width: 16rem;
+    background: var(--color-button);
+  }
+
+  .hero-cta:hover {
+    background: #527086;
   }
 
   /* Welcome section */
@@ -219,7 +225,7 @@ const t = getTranslations('it');
     }
 
     .hero-logo {
-      max-width: 460px;
+      max-width: 520px;
     }
 
     .hero-date {
@@ -228,7 +234,7 @@ const t = getTranslations('it');
 
     .hero-subtitle {
       font-size: 0.8rem;
-      letter-spacing: 0.16rem;
+      letter-spacing: 0.12rem;
       margin-bottom: 2.5rem;
     }
 
