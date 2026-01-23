@@ -6,7 +6,6 @@
   "nav": {
     "home": "Home",
     "competition": "Concorso",
-    "jury": "Giuria",
     "apply": "Iscrizione",
     "contact": "Contatti"
   },
@@ -65,12 +64,6 @@
         "third": { "prize": "€300", "concerts": "1 concerto" }
       }
     }
-  },
-  "jury": {
-    "title": "Giuria",
-    "president": "Presidente",
-    "members": "Membri",
-    "tba": "Da annunciare"
   },
   "apply": {
     "title": "Iscrizione",

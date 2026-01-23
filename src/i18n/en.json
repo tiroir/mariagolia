@@ -6,7 +6,6 @@
   "nav": {
     "home": "Home",
     "competition": "Competition",
-    "jury": "Jury",
     "apply": "Apply",
     "contact": "Contact"
   },
@@ -65,12 +64,6 @@
         "third": { "prize": "€300", "concerts": "1 concert" }
       }
     }
-  },
-  "jury": {
-    "title": "Jury",
-    "president": "President",
-    "members": "Members",
-    "tba": "To be announced"
   },
   "apply": {
     "title": "Apply",
