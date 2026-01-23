@@ -1,2 +1,5 @@
+# Root redirect to default locale
+/  /en/  301
+
 # 301 redirect www to apex domain
 https://www.mariagolia.com/* https://mariagolia.com/:splat 301
