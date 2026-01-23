@@ -28,3 +28,12 @@ npm-debug.log*
 
 # Image source files (keep originals out of production)
 public/images/source/
+tmp/
+
+# Source/backup images (not for production)
+public/ORIUM-LOGO-*
+public/images/*-backup*
+public/images/*-original*
+public/images/signature-*
+public/images/mariagolia-sign*
+public/images/bef2385f-*
