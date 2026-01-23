@@ -97,7 +97,7 @@ const t = getTranslations('it');
   }
 
   .hero-logo {
-    max-width: 750px;
+    max-width: 2250px;
     width: 100%;
     height: auto;
     margin-bottom: 0;
@@ -105,36 +105,43 @@ const t = getTranslations('it');
 
   .hero-subtitle {
     font-family: var(--font-serif);
-    font-size: 0.9375rem;
-    letter-spacing: 0.2rem;
-    color: var(--color-dark);
-    margin-bottom: 0.5rem;
-    font-weight: 500;
+    font-size: 1.75rem;
+    letter-spacing: 0.25em;
+    color: #32658B;
+    margin-bottom: 0.75rem;
+    font-weight: 700;
   }
 
   .hero-date {
     font-family: var(--font-serif);
-    font-size: 2.25rem;
-    font-weight: 500;
+    font-size: 4rem;
+    font-weight: 700;
     color: var(--color-dark);
-    margin-bottom: 0.125rem;
+    letter-spacing: 0.12rem;
+    margin-bottom: 0.25rem;
   }
 
   .hero-location {
-    font-size: 1rem;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
     color: var(--color-text);
-    margin-bottom: 1rem;
+    letter-spacing: 0.075rem;
+    margin-bottom: 1.5rem;
   }
 
   .hero-cta {
-    font-size: 1.25rem;
-    padding: 1.1rem 3rem;
-    min-width: 16rem;
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    font-weight: 400;
+    letter-spacing: 0.075rem;
+    padding: 1.25rem 4rem;
+    min-width: 19rem;
     background: var(--color-button);
   }
 
   .hero-cta:hover {
-    background: #4d6a7e;
+    background: #456580;
   }
 
   /* Welcome section */
@@ -219,13 +226,13 @@ const t = getTranslations('it');
     color: var(--color-dark) !important;
   }
 
-  @media (max-width: 600px) {
+  @media (max-width: 768px) {
     .hero {
-      padding: 6rem 0 4.5rem;
+      padding: 5rem 0 3rem;
     }
 
     .hero-logo {
-      max-width: 600px;
+      max-width: 90%;
     }
 
     .hero-date {
@@ -233,20 +240,20 @@ const t = getTranslations('it');
     }
 
     .hero-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.75rem;
       letter-spacing: 0.15rem;
-      margin-bottom: 1.75rem;
+      margin-bottom: 1rem;
     }
 
     .hero-location {
-      font-size: 1.125rem;
-      margin-bottom: 2rem;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
     }
 
     .hero-cta {
-      font-size: 1.0625rem;
-      min-width: 12rem;
-      padding: 0.95rem 2.25rem;
+      font-size: 1.5rem;
+      min-width: 14rem;
+      padding: 1rem 2.5rem;
     }
   }
 </style>
