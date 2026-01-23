@@ -9,7 +9,7 @@ const t = getTranslations('it');
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="container hero-content">
-      <img src="/images/logo.png" alt="Maria Golia Concorso Internazionale di Pianoforte" class="hero-logo" />
+      <h1 class="hero-title">The Maria Golia Prize</h1>
 
       <p class="hero-subtitle">CONCORSO INTERNAZIONALE DI PIANOFORTE</p>
 
@@ -65,29 +65,17 @@ const t = getTranslations('it');
 <style>
   .hero {
     position: relative;
-    min-height: 100vh;
+    min-height: auto;
     display: flex;
     align-items: flex-start;
     justify-content: center;
     text-align: center;
     overflow: hidden;
-    padding: 5.5rem 0 5rem;
+    padding: 9rem 0 2rem;
   }
 
   .hero-bg {
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(180deg,
-        rgba(248, 246, 243, 0.5) 0%,
-        rgba(248, 246, 243, 0.7) 50%,
-        rgba(248, 246, 243, 0.9) 100%
-      ),
-      url('/images/hero-bg.png');
-    background-color: #f5f2ef;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    display: none;
   }
 
   .hero-content {
@@ -96,11 +84,15 @@ const t = getTranslations('it');
     padding: 0 1.5rem;
   }
 
-  .hero-logo {
-    max-width: 2250px;
-    width: 100%;
-    height: auto;
-    margin-bottom: 0;
+  .hero-title {
+    font-family: var(--font-serif);
+    font-size: clamp(2.25rem, 6vw, 5.25rem);
+    font-weight: 400;
+    font-style: italic;
+    color: var(--color-dark);
+    margin-bottom: 1rem;
+    letter-spacing: 0.02em;
+    line-height: 1.1;
   }
 
   .hero-subtitle {
@@ -148,6 +140,7 @@ const t = getTranslations('it');
   .welcome {
     background: var(--color-light);
     border-top: 1px solid var(--color-border);
+    padding-bottom: 1.5rem;
   }
 
   .welcome-title {
@@ -228,11 +221,11 @@ const t = getTranslations('it');
 
   @media (max-width: 768px) {
     .hero {
-      padding: 5rem 0 3rem;
+      padding: 2rem 0 3rem;
     }
 
-    .hero-logo {
-      max-width: 90%;
+    .hero-title {
+      font-size: clamp(1.5rem, 7.5vw, 2.625rem);
     }
 
     .hero-date {

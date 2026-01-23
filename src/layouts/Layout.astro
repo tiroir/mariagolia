@@ -23,11 +23,14 @@ const { title = t.site.title, description = t.site.description } = Astro.props;
   <title>{title}</title>
 </head>
 <body>
+  <div class="global-bg"></div>
   <Header locale={locale} />
-  <main>
-    <slot />
-  </main>
-  <Footer locale={locale} />
+  <div class="content-clip-wrapper">
+    <main>
+      <slot />
+    </main>
+    <Footer locale={locale} />
+  </div>
 </body>
 </html>
 
@@ -67,6 +70,36 @@ const { title = t.site.title, description = t.site.description } = Astro.props;
     color: var(--color-dark);
     font-size: 16px;
     line-height: 1.6;
+  }
+
+  .global-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    background:
+      linear-gradient(180deg,
+        rgba(248, 246, 243, 0.5) 0%,
+        rgba(248, 246, 243, 0.7) 50%,
+        rgba(248, 246, 243, 0.9) 100%
+      ),
+      url('/images/hero-bg.png');
+    background-color: #f5f2ef;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .content-clip-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: auto;
+    clip-path: inset(140px 0 0 0);
   }
 
   main {
