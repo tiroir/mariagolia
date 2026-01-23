@@ -23,22 +23,55 @@ const altPath = currentPath.replace(`/${locale}`, `/${altLocale}`);
 
 <header class="header">
   <div class="container header-inner">
-    <div class="lang-switch">
-      <a href={altPath.replace(`/${altLocale}`, '/it')} class:list={['lang-link', { active: locale === 'it' }]}>IT</a>
-      <span class="lang-sep">/</span>
-      <a href={altPath.replace(`/${altLocale}`, '/en')} class:list={['lang-link', { active: locale === 'en' }]}>EN</a>
+    <!-- Left side: Logo + Desktop Navigation -->
+    <div class="header-left">
+      <a href={`/${locale}`} class="logo-link" aria-label="Home">
+        <img src="/images/logo.svg" alt="Maria Golia" class="header-logo" />
+      </a>
+      <nav class="desktop-nav">
+        {navItems.map(item => (
+          <a href={item.href} class:list={['nav-link', { active: currentPath.startsWith(item.href) }]}>
+            {item.label}
+          </a>
+        ))}
+        <a href={`/${locale}/apply`} class="nav-btn">
+          {locale === 'en' ? 'Apply' : 'Iscrizione'}
+        </a>
+      </nav>
     </div>
 
-    <nav class="nav">
-      {navItems.map(item => (
-        <a href={item.href} class:list={['nav-link', { active: currentPath.startsWith(item.href) }]}>
-          {item.label}
-        </a>
-      ))}
-      <a href={`/${locale}/apply`} class="nav-btn">
-        {locale === 'en' ? 'Apply' : 'Iscrizione'}
-      </a>
-    </nav>
+    <!-- Right side: Language Switcher (desktop) + Hamburger (mobile) -->
+    <div class="header-right">
+      <div class="lang-switch desktop-lang">
+        <a href={altPath.replace(`/${altLocale}`, '/it')} class:list={['lang-link', { active: locale === 'it' }]}>IT</a>
+        <span class="lang-sep">/</span>
+        <a href={altPath.replace(`/${altLocale}`, '/en')} class:list={['lang-link', { active: locale === 'en' }]}>EN</a>
+      </div>
+
+      <!-- Mobile Menu -->
+      <details class="mobile-menu">
+        <summary class="hamburger" aria-label={locale === 'en' ? 'Open menu' : 'Apri menu'}>
+          <span class="hamburger-icon" aria-hidden="true">&#9776;</span>
+        </summary>
+        <div class="mobile-menu-content">
+          <nav class="mobile-nav">
+            {navItems.map(item => (
+              <a href={item.href} class:list={['mobile-nav-link', { active: currentPath.startsWith(item.href) }]}>
+                {item.label}
+              </a>
+            ))}
+            <a href={`/${locale}/apply`} class="mobile-nav-btn">
+              {locale === 'en' ? 'Apply' : 'Iscrizione'}
+            </a>
+          </nav>
+          <div class="mobile-lang-switch">
+            <a href={altPath.replace(`/${altLocale}`, '/it')} class:list={['lang-link', { active: locale === 'it' }]}>IT</a>
+            <span class="lang-sep">/</span>
+            <a href={altPath.replace(`/${altLocale}`, '/en')} class:list={['lang-link', { active: locale === 'en' }]}>EN</a>
+          </div>
+        </div>
+      </details>
+    </div>
   </div>
 </header>
 
@@ -49,7 +82,7 @@ const altPath = currentPath.replace(`/${locale}`, `/${altLocale}`);
     left: 0;
     right: 0;
     z-index: 100;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
   }
 
   .header-inner {
@@ -58,37 +91,25 @@ const altPath = currentPath.replace(`/${locale}`, `/${altLocale}`);
     justify-content: space-between;
   }
 
-  .lang-switch {
+  /* Left side: Logo + Navigation */
+  .header-left {
     display: flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 2rem;
   }
 
-  .lang-link {
-    font-size: 0.85rem;
-    color: var(--color-text);
-    padding: 0.25rem;
-    opacity: 0.6;
-    transition: opacity 0.2s;
+  .logo-link {
+    display: flex;
+    align-items: center;
   }
 
-  .lang-link:hover {
-    text-decoration: none;
-    opacity: 1;
+  .header-logo {
+    height: 40px;
+    width: auto;
   }
 
-  .lang-link.active {
-    opacity: 1;
-    font-weight: 500;
-  }
-
-  .lang-sep {
-    color: var(--color-text);
-    opacity: 0.4;
-    font-size: 0.85rem;
-  }
-
-  .nav {
+  /* Desktop Navigation */
+  .desktop-nav {
     display: flex;
     align-items: center;
     gap: 1.5rem;
@@ -125,23 +146,170 @@ const altPath = currentPath.replace(`/${locale}`, `/${altLocale}`);
     text-decoration: none;
   }
 
+  /* Right side: Language switcher */
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .lang-switch {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  .lang-link {
+    font-size: 0.85rem;
+    color: var(--color-text);
+    padding: 0.25rem;
+    opacity: 0.6;
+    transition: opacity 0.2s;
+  }
+
+  .lang-link:hover {
+    text-decoration: none;
+    opacity: 1;
+  }
+
+  .lang-link.active {
+    opacity: 1;
+    font-weight: 500;
+  }
+
+  .lang-sep {
+    color: var(--color-text);
+    opacity: 0.4;
+    font-size: 0.85rem;
+  }
+
+  /* Mobile menu - hidden on desktop */
+  .mobile-menu {
+    display: none;
+  }
+
+  /* Mobile styles */
   @media (max-width: 768px) {
     .header {
       position: relative;
       background: var(--color-cream);
       border-bottom: 1px solid var(--color-border);
+      padding: 0.75rem 0;
     }
 
-    .header-inner {
-      flex-wrap: wrap;
-      gap: 1rem;
+    .header-logo {
+      height: 32px;
     }
 
-    .nav {
-      width: 100%;
+    /* Hide desktop navigation */
+    .desktop-nav {
+      display: none;
+    }
+
+    /* Hide desktop language switcher */
+    .desktop-lang {
+      display: none;
+    }
+
+    /* Show mobile menu */
+    .mobile-menu {
+      display: block;
+      position: relative;
+    }
+
+    .hamburger {
+      display: flex;
+      align-items: center;
       justify-content: center;
-      flex-wrap: wrap;
-      gap: 1rem;
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      list-style: none;
+      background: none;
+      border: none;
+    }
+
+    .hamburger::-webkit-details-marker {
+      display: none;
+    }
+
+    .hamburger-icon {
+      font-size: 1.5rem;
+      color: var(--color-dark);
+      line-height: 1;
+    }
+
+    /* Mobile menu content - dropdown */
+    .mobile-menu-content {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      min-width: 200px;
+      background: var(--color-cream);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      padding: 1rem;
+      margin-top: 0.5rem;
+      z-index: 200;
+    }
+
+    .mobile-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .mobile-nav-link {
+      display: block;
+      padding: 0.75rem 1rem;
+      color: var(--color-dark);
+      font-size: 1rem;
+      border-radius: 4px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .mobile-nav-link:hover {
+      background: var(--color-light);
+      text-decoration: none;
+    }
+
+    .mobile-nav-link.active {
+      color: var(--color-primary);
+      background: var(--color-light);
+    }
+
+    .mobile-nav-btn {
+      display: block;
+      text-align: center;
+      background: var(--color-button);
+      color: white;
+      padding: 0.75rem 1rem;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      transition: background 0.2s;
+    }
+
+    .mobile-nav-btn:hover {
+      background: #456580;
+      text-decoration: none;
+    }
+
+    .mobile-lang-switch {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .mobile-lang-switch .lang-link {
+      font-size: 0.9rem;
+      padding: 0.5rem;
     }
   }
 </style>
