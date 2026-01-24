@@ -31,7 +31,7 @@
   "competition": {
     "title": "Competition Structure",
     "section1": {
-      "title": "Section I: Youth Categories",
+      "title": "Youth Categories",
       "intro": "Each candidate performs one single piece, representative of their level.",
       "categories": {
         "a": { "name": "Category A", "age": "up to 7 years", "duration": "5 minutes max" },
@@ -42,7 +42,7 @@
       "prizes": "Book vouchers (€50) and participation diplomas"
     },
     "section2": {
-      "title": "Section II: Maria Golia International",
+      "title": "Maria Golia International",
       "intro": "Open to pianists of all nationalities, no age limit.",
       "preselection": {
         "title": "Online Pre-selection",

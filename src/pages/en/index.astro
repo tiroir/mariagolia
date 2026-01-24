@@ -9,7 +9,7 @@ const t = getTranslations('en');
   <section class="hero">
     <div class="hero-bg"></div>
     <div class="container hero-content">
-      <h1 class="hero-title">The Maria Golia Prize</h1>
+      <img src="/images/maria-golia-signature.png" alt="The Maria Golia Prize" class="hero-logo" />
 
       <p class="hero-subtitle">INTERNATIONAL PIANO COMPETITION</p>
 
@@ -34,14 +34,14 @@ const t = getTranslations('en');
     <div class="container">
       <div class="cards">
         <div class="card">
-          <h3>Section I: Youth Categories</h3>
-          <p>Four age categories for young pianists up to 18 years old. A nurturing environment to showcase emerging talent.</p>
-          <a href="/en/competition#youth">Learn more →</a>
-        </div>
-        <div class="card">
-          <h3>Section II: International</h3>
+          <h3>Maria Golia International</h3>
           <p>Open to pianists aged 18-32. Pre-selection round followed by finals with cash prizes and concert opportunities.</p>
           <a href="/en/competition#international">Learn more →</a>
+        </div>
+        <div class="card">
+          <h3>Youth Categories</h3>
+          <p>Four age categories for young pianists up to 18 years old. A nurturing environment to showcase emerging talent.</p>
+          <a href="/en/competition#youth">Learn more →</a>
         </div>
       </div>
     </div>
@@ -84,15 +84,11 @@ const t = getTranslations('en');
     padding: 0 1.5rem;
   }
 
-  .hero-title {
-    font-family: var(--font-serif);
-    font-size: clamp(2.25rem, 6vw, 5.25rem);
-    font-weight: 400;
-    font-style: italic;
-    color: var(--color-dark);
+  .hero-logo {
+    max-width: 90%;
+    width: 600px;
+    height: auto;
     margin-bottom: 1rem;
-    letter-spacing: 0.02em;
-    line-height: 1.1;
   }
 
   .hero-subtitle {
@@ -224,8 +220,9 @@ const t = getTranslations('en');
       padding: 2rem 0 3rem;
     }
 
-    .hero-title {
-      font-size: clamp(1.5rem, 7.5vw, 2.625rem);
+    .hero-logo {
+      width: 85%;
+      max-width: 400px;
     }
 
     .hero-date {
