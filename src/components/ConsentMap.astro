@@ -1,0 +1,141 @@
+---
+interface Props {
+  mapUrl: string;
+  locale: 'en' | 'it';
+}
+
+const { mapUrl, locale } = Astro.props;
+
+const labels = {
+  en: {
+    title: 'Google Maps',
+    description: 'By clicking "Load Map", you consent to Google processing your data.',
+    button: 'Load Map',
+    privacy: 'Privacy Policy'
+  },
+  it: {
+    title: 'Google Maps',
+    description: 'Cliccando "Carica Mappa", acconsenti al trattamento dei tuoi dati da parte di Google.',
+    button: 'Carica Mappa',
+    privacy: 'Privacy Policy'
+  }
+};
+
+const t = labels[locale];
+const privacyUrl = locale === 'it' ? '/it/privacy' : '/en/privacy';
+---
+
+<div class="consent-map" data-map-url={mapUrl}>
+  <div class="placeholder">
+    <div class="content">
+      <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+        <circle cx="12" cy="10" r="3"></circle>
+      </svg>
+      <h3>{t.title}</h3>
+      <p>{t.description}</p>
+      <p class="privacy-link"><a href={privacyUrl}>{t.privacy}</a></p>
+      <button class="btn load-map-btn">{t.button}</button>
+    </div>
+  </div>
+  <div class="map-frame" style="display: none;">
+    <iframe
+      width="100%"
+      height="400"
+      style="border:0;"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const CONSENT_KEY = 'mariagolia-maps-consent';
+
+    document.querySelectorAll('.consent-map').forEach((container) => {
+      const mapUrl = container.getAttribute('data-map-url');
+      const placeholder = container.querySelector('.placeholder') as HTMLElement;
+      const mapFrame = container.querySelector('.map-frame') as HTMLElement;
+      const iframe = container.querySelector('iframe') as HTMLIFrameElement;
+      const button = container.querySelector('.load-map-btn');
+
+      const loadMap = () => {
+        if (mapUrl && iframe) {
+          iframe.src = mapUrl;
+          placeholder.style.display = 'none';
+          mapFrame.style.display = 'block';
+        }
+      };
+
+      // Check for existing consent
+      if (localStorage.getItem(CONSENT_KEY) === 'true') {
+        loadMap();
+      }
+
+      // Handle button click
+      button?.addEventListener('click', () => {
+        localStorage.setItem(CONSENT_KEY, 'true');
+        loadMap();
+      });
+    });
+  });
+</script>
+
+<style>
+  .consent-map {
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  .placeholder {
+    height: 100%;
+    background: linear-gradient(135deg, var(--color-light) 0%, #e8e6e3 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .content {
+    max-width: 320px;
+    padding: 2rem;
+  }
+
+  .content svg {
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+  }
+
+  .content h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-dark);
+  }
+
+  .content p {
+    font-size: 0.9rem;
+    color: var(--color-text);
+    line-height: 1.5;
+    margin-bottom: 0.5rem;
+  }
+
+  .privacy-link {
+    margin-bottom: 1.25rem;
+  }
+
+  .privacy-link a {
+    font-size: 0.85rem;
+  }
+
+  .map-frame {
+    height: 100%;
+  }
+
+  .map-frame iframe {
+    display: block;
+    height: 100%;
+  }
+</style>
