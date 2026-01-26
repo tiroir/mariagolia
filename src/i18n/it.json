@@ -6,6 +6,7 @@
   "nav": {
     "home": "Home",
     "competition": "Concorso",
+    "jury": "Giuria",
     "apply": "Iscrizione",
     "contact": "Contatti"
   },
@@ -20,7 +21,7 @@
     "sections": {
       "youth": {
         "title": "Categorie Giovani",
-        "description": "Categorie A-D per giovani pianisti fino a 15 anni"
+        "description": "Categorie 12-17 per giovani pianisti fino a 20 anni"
       },
       "international": {
         "title": "Concorso Internazionale",
@@ -32,14 +33,16 @@
     "title": "Struttura del Concorso",
     "section1": {
       "title": "Categorie Giovani",
-      "intro": "Ogni candidato esegue un unico brano, rappresentativo del proprio livello.",
+      "intro": "Ogni candidato esegue un programma libero rappresentativo del proprio livello.",
       "categories": {
-        "a": { "name": "Categoria A", "age": "fino a 7 anni", "duration": "5 minuti max" },
-        "b": { "name": "Categoria B", "age": "7-10 anni", "duration": "8 minuti max" },
-        "c": { "name": "Categoria C", "age": "10-12 anni", "duration": "12 minuti max" },
-        "d": { "name": "Categoria D", "age": "12-15 anni", "duration": "18 minuti max" }
+        "cat12": { "name": "Categoria 12", "birthYear": "Nati dal 2019 in poi", "duration": "3 minuti max" },
+        "cat13": { "name": "Categoria 13", "birthYear": "Nati nel 2017-2018", "duration": "5 minuti max" },
+        "cat14": { "name": "Categoria 14", "birthYear": "Nati nel 2015-2016", "duration": "8 minuti max" },
+        "cat15": { "name": "Categoria 15", "birthYear": "Nati nel 2013-2014", "duration": "11 minuti max" },
+        "cat16": { "name": "Categoria 16", "birthYear": "Nati nel 2010-2012", "duration": "15 minuti max" },
+        "cat17": { "name": "Categoria 17", "birthYear": "Nati nel 2006-2009", "duration": "20 minuti max" }
       },
-      "prizes": "Buoni libro (€50) e diplomi di partecipazione"
+      "prizes": "Regali e diplomi di partecipazione"
     },
     "section2": {
       "title": "Maria Golia International",
@@ -85,5 +88,27 @@
     "copyright": "© 2026 Maria Golia Concorso Pianistico Internazionale",
     "director": "Direzione Artistica: Marina Scalafiotti",
     "organizer": "Concorso organizzato da"
+  },
+  "jury": {
+    "title": "La Giuria",
+    "intro": "La giuria del concorso è composta da pianisti e pedagoghi di fama internazionale.",
+    "youthTitle": "Giuria Categorie Giovani",
+    "youthDays": "Giorni 1-2",
+    "internationalTitle": "Giuria Categoria Internazionale",
+    "internationalDays": "Giorno 3",
+    "plusPrevious": "Tutti i membri della giuria giovani più:",
+    "roles": {
+      "president": "Presidente",
+      "member": "Giurato"
+    },
+    "members": {
+      "scalafiotti": { "name": "Marina Scalafiotti", "role": "president" },
+      "dalmau": { "name": "Noemi Dalmau", "role": "member" },
+      "marroccu": { "name": "Sandro Marroccu", "role": "member" },
+      "dong": { "name": "Xin Dong Yang", "role": "member" },
+      "litvichko": { "name": "Olga Litvichko", "role": "member" },
+      "weichert": { "name": "Caroline Weichert", "role": "member" },
+      "noto": { "name": "Ciro Noto", "role": "member" }
+    }
   }
 }
