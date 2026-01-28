@@ -12,8 +12,7 @@ const currentPath = Astro.url.pathname;
 // Navigation items (without Home, Apply is special)
 const navItems = [
   { href: `/${locale}/about`, label: locale === 'en' ? 'About' : 'Chi siamo' },
-  { href: `/${locale}/competition`, label: locale === 'en' ? 'Rules' : 'Regolamento' },
-  { href: `/${locale}/${locale === 'en' ? 'jury' : 'giuria'}`, label: locale === 'en' ? 'Jury' : 'Giuria' },
+  { href: `/${locale}/${locale === 'en' ? 'regulations' : 'regolamento'}`, label: locale === 'en' ? 'Regulations' : 'Regolamento' },
   { href: `/${locale}/contact`, label: locale === 'en' ? 'Venue' : 'Location' },
 ];
 

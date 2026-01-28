@@ -64,6 +64,15 @@ const t = getTranslations('it');
         </div>
       </div>
 
+      <div class="info-card full-width regulations-card">
+        <h2>Regolamento</h2>
+        <p>Consulta il bando e regolamento completo del concorso per tutte le regole, il sistema di punteggio e le informazioni dettagliate.</p>
+        <div class="reg-links">
+          <a href="/it/regolamento" class="btn">Leggi il regolamento</a>
+          <a href="/docs/bando-2026-it.md" download class="btn btn-outline">Scarica il bando</a>
+        </div>
+      </div>
+
       <div class="cta-section">
         <h2>Domande?</h2>
         <p>{t.apply.contact}</p>
@@ -173,5 +182,31 @@ const t = getTranslations('it');
   .cta-section p {
     color: #666;
     margin-bottom: 1.5rem;
+  }
+
+  .regulations-card {
+    margin-bottom: 3rem;
+  }
+
+  .regulations-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  .reg-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-button);
+    border: 2px solid var(--color-button);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-button);
+    color: white;
   }
 </style>

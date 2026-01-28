@@ -64,6 +64,15 @@ const t = getTranslations('en');
         </div>
       </div>
 
+      <div class="info-card full-width regulations-card">
+        <h2>Regulations</h2>
+        <p>Read the full terms and conditions of the competition for all rules, scoring system and detailed information.</p>
+        <div class="reg-links">
+          <a href="/en/regulations" class="btn">Read the regulations</a>
+          <a href="/docs/bando-2026-en.md" download class="btn btn-outline">Download regulations</a>
+        </div>
+      </div>
+
       <div class="cta-section">
         <h2>Questions?</h2>
         <p>{t.apply.contact}</p>
@@ -173,5 +182,31 @@ const t = getTranslations('en');
   .cta-section p {
     color: #666;
     margin-bottom: 1.5rem;
+  }
+
+  .regulations-card {
+    margin-bottom: 3rem;
+  }
+
+  .regulations-card p {
+    color: #666;
+    margin-bottom: 1.5rem;
+  }
+
+  .reg-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-button);
+    border: 2px solid var(--color-button);
+  }
+
+  .btn-outline:hover {
+    background: var(--color-button);
+    color: white;
   }
 </style>
